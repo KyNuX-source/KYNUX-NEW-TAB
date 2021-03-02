@@ -1,5 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.body.style.backgroundImage = "url('bg" + Math.floor(Math.random() * 7 + 1) + ".jpg')";
+chrome.storage.sync.get("favoriteColor", function (obj) {
+    console.log(obj);
+    var favoriteColor = obj.favoriteColor;
+        function yourFunction(){
+    // do whatever you like here
+    //var theme = document.getElementById("theme").selectedIndex;
+    //var stheme = document.getElementById("theme").options.selectedIndex = theme;
+    //console.log(stheme);
+    if(favoriteColor == "flat"){
+    	document.body.style.backgroundImage = "url('/flat/bg" + Math.floor(Math.random() * 7 + 1) + ".jpg')";
+    };
+    if(favoriteColor == "nature"){
+    	document.body.style.backgroundImage = "url('/nature/bg" + Math.floor(Math.random() * 7 + 1) + ".jpg')";
+    };
+    if(favoriteColor == "dino"){
+    	document.body.style.backgroundImage = "url('/dino/bg" + Math.floor(Math.random() * 7 + 1) + ".jpg')";
+    };
+    setTimeout(yourFunction, 50000);
+}
+yourFunction();
+});
+document.querySelector('#go-to-options').addEventListener('click', function() {
+  if (chrome.runtime.openOptionsPage) {
+    chrome.runtime.openOptionsPage();
+  } else {
+    window.open(chrome.runtime.getURL('options.html'));
+  }
+});
+
+
     var Clock = (function () {
         var exports = function (element) {
             this._element = element;
@@ -94,4 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#month').innerHTML = month;
     document.querySelector('#num-date').innerHTML = numDate;
     document.querySelector('#timeframe').innerHTML = timeframe;
+});
+chrome.runtime.onInstalled.addListener(() => {
+	
 });

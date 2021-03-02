@@ -143,3 +143,18 @@ a {
     border: 0px solid #bdbdbd;
 /*    box-shadow: 5px 5px 15px #000;
 */}
+select {
+	border: 0px;
+	border-radius: 5px;
+	background: #181818;
+	color: white;
+}
+button{
+	
+	background: #181818;
+	color: white;
+	border: 0px;
+	border-radius: 5px;
+	width: 100px;
+	height: 20px;
+}
